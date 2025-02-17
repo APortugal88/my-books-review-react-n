@@ -11,24 +11,19 @@ export default function RegisterScreen({ navigation }) {
 
     // Función para registrar al usuario
     const handleRegister = async () => {
-      console.log("handleRegister called");
       if (password !== confirmPassword) {
         console.log("Las contraseñas no coinciden");
-        Alert.alert('Error', 'Las contraseñas no coinciden');
         return;
       }
   
       try {
         // Registra al usuario en Firebase
-        console.log(auth);
-        await createUserWithEmailAndPassword(auth, email, password);
+        await createUserWithEmailAndPassword(auth, email, password); 
         console.log("Éxito");
-        Alert.alert('Éxito', 'Usuario registrado correctamente');
         navigation.navigate('Login'); // Redirige a la pantalla de login
       } catch (error) {
         // Muestra un mensaje de error si ocurre un fallo
         console.log("error ", error);
-        Alert.alert('Error', error.message);
       }
     };
 
